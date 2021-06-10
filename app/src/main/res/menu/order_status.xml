@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="example.javatpoint.com.optionmenu.MainActivity">
+
+    <item  android:id="@+id/New"
+        android:icon="@drawable/baseline_shopping_bag_24"
+        android:title="New"/>
+    <item  android:id="@+id/Accepted"
+        android:icon="@drawable/baseline_thumb_up_24"
+        android:title="Accepted"/>
+    <item  android:id="@+id/Processing"
+        android:icon="@drawable/proccessing"
+        android:title="Processing"/>
+    <item  android:id="@+id/Cancelled"
+        android:icon="@drawable/baseline_block_24"
+        android:title="Cancelled"/>
+    <item android:id="@+id/Delivered"
+        android:icon="@drawable/baseline_done_all_24"
+        android:title="Delivered"/>
+</menu>

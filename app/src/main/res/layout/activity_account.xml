@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center|left"
+                android:padding="25dp"
+                android:background="@color/purple_200">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:onClick="ProPic"
+                    android:clickable="true"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="60dp">
+
+                    <ImageView
+                        android:id="@+id/Propic"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/man"
+                        android:scaleType="centerCrop"
+                        android:background="@color/white"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:background="@drawable/ripple"
+                        android:textSize="12dp"
+                        android:text="Change"/>
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/pro_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#000"
+                            android:textSize="14dp"/>
+                        <TextView
+                            android:id="@+id/pro_memID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#000"
+                            android:textSize="12dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:gravity="right"
+                        android:layout_gravity="bottom"
+                        android:background="@color/purple_200"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:padding="5dp"
+                            android:onClick="Logout"
+                            android:layout_marginRight="10dp"
+                            android:drawablePadding="5dp"
+                            android:drawableLeft="@drawable/outline_logout_20"
+                            android:gravity="center"
+                            android:layout_gravity="right"
+                            android:textStyle="bold"
+                            android:background="@drawable/ripple"
+                            android:textSize="12dp"
+                            android:text="Logout"/>
+
+
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:onClick="DownloadInvoice"
+                android:clickable="true"
+                android:background="@drawable/ripple_bg">
+
+                <LinearLayout
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/invoice"
+                        android:scaleType="fitCenter"/>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center|left">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Download Invoice"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#000"
+                            android:textStyle="bold"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Exito Joining GST invoice"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="12dp"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                       <ImageView
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:src="@drawable/baseline_arrow_forward_ios_20"
+                           android:padding="18dp"
+                           app:tint="@color/purple_200" />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:background="@drawable/ripple_bg">
+
+                <LinearLayout
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/withdraw"
+                        android:scaleType="fitCenter"/>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center|left">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Withdraw Money"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#000"
+                            android:textStyle="bold"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Withdraw Exito wallet money"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="12dp"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/baseline_arrow_forward_ios_20"
+                            android:padding="18dp"
+                            app:tint="@color/purple_200" />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:gravity="center"
+                android:background="@color/purple_200"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Account Details"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="14dp"/>
+
+                <TextView
+                    android:id="@+id/edit_acct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:onClick="EditBank"
+                    android:layout_marginRight="10dp"
+                    android:drawablePadding="5dp"
+                    android:drawableLeft="@drawable/outline_edit_24"
+                    android:gravity="center"
+                    android:layout_gravity="right|bottom"
+                    android:textStyle="bold"
+                    android:background="@drawable/ripple"
+                    android:textSize="12dp"
+                    android:text="Edit"/>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Number"
+                    android:layout_marginLeft="2dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_mobile"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:hint="Enter your Member ID"
+                    android:enabled="false"
+                    android:inputType="textCapCharacters"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email ID"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_email"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:hint="Enter your Member ID"
+                    android:enabled="false"
+                    android:inputType="textCapCharacters"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PAN"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_pan"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:hint="Enter your Member ID"
+                    android:enabled="false"
+                    android:inputType="textCapCharacters"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aadhaar Number"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_adr"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:hint="Enter your Member ID"
+                    android:enabled="false"
+                    android:inputType="textCapCharacters"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_address"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textSize="14dp"
+                    android:hint="Enter your Address"
+                    android:inputType="textImeMultiLine"
+                    android:text=""
+                    android:enabled="false"
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pin Code"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_pincode"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:hint="Enter your Member ID"
+                    android:enabled="false"
+                    android:inputType="textCapCharacters"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="District"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_dist"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:hint="Enter your Member ID"
+                    android:enabled="false"
+                    android:inputType="textCapCharacters"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="State"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_state"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:hint="Enter your Member ID"
+                    android:enabled="false"
+                    android:inputType="textCapCharacters"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:gravity="center"
+                android:background="@color/purple_200"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Bank Details"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="14dp"/>
+
+                <TextView
+                    android:id="@+id/edit_bank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:onClick="EditBank"
+                    android:layout_marginRight="10dp"
+                    android:drawablePadding="5dp"
+                    android:drawableLeft="@drawable/outline_edit_24"
+                    android:gravity="center"
+                    android:layout_gravity="right|bottom"
+                    android:textStyle="bold"
+                    android:background="@drawable/ripple"
+                    android:textSize="12dp"
+                    android:text="Edit"/>
+
+
+
+            </LinearLayout>
+
+
+
+
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="IFSC"
+                     android:layout_marginLeft="2dp"
+                     android:fontFamily="sans-serif-medium"
+                     android:textColor="#000"
+                     android:textSize="12dp"/>
+
+                 <EditText
+                     android:id="@+id/pro_ifsc"
+                     android:layout_marginTop="-5dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:textSize="14dp"
+                     android:hint="Enter IFSC"
+                     android:enabled="false"
+                     android:inputType="textCapCharacters"
+                     android:text=""
+                     android:textColor="@color/purple_50"
+                     android:textColorHint="#4F7A7A7A"
+                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bank Name"
+                    android:layout_marginLeft="2dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#000"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/pro_bname"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:hint="Enter your Bank Name"
+                    android:enabled="false"
+                    android:inputType="textCapCharacters"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F7A7A7A"
+                    android:textStyle="bold" />
+
+                 <TextView
+                     android:layout_marginTop="8dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Branch Name"
+                     android:layout_marginLeft="2dp"
+                     android:fontFamily="sans-serif-medium"
+                     android:textColor="#000"
+                     android:textSize="12dp"/>
+
+                 <EditText
+                     android:id="@+id/pro_branch"
+                     android:layout_marginTop="-5dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:textSize="14dp"
+                     android:hint="Enter Branch Name"
+                     android:enabled="false"
+                     android:inputType="textCapCharacters"
+                     android:text=""
+                     android:textColor="@color/purple_50"
+                     android:textColorHint="#4F7A7A7A"
+                     android:textStyle="bold" />
+
+                 <TextView
+                     android:layout_marginTop="8dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Account Holder"
+                     android:layout_marginLeft="2dp"
+                     android:fontFamily="sans-serif-medium"
+                     android:textColor="#000"
+                     android:textSize="12dp"/>
+
+                 <EditText
+                     android:id="@+id/pro_hname"
+                     android:layout_marginTop="-5dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:textSize="14dp"
+                     android:hint="Enter Account Holder Name"
+                     android:enabled="false"
+                     android:inputType="textCapCharacters"
+                     android:text=""
+                     android:textColor="@color/purple_50"
+                     android:textColorHint="#4F7A7A7A"
+                     android:textStyle="bold" />
+
+
+
+
+
+
+
+                 <FrameLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:gravity="center"
+                         android:layout_marginTop="-5dp"
+                         android:orientation="vertical">
+
+                         <TextView
+                             android:layout_marginTop="8dp"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:text="Account Type"
+                             android:clickable="false"
+                             android:layout_marginLeft="2dp"
+                             android:fontFamily="sans-serif-medium"
+                             android:textColor="#000"
+                             android:textSize="12dp"/>
+
+                         <EditText
+                             android:id="@+id/pro_acctype"
+                             android:layout_weight="1"
+                             android:layout_marginTop="-5dp"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:textSize="14dp"
+                             android:hint="Enter Account Type"
+                             android:enabled="false"
+                             android:clickable="false"
+                             android:inputType="textCapCharacters"
+                             android:text=""
+                             android:textColor="@color/purple_50"
+                             android:textColorHint="#4F7A7A7A"
+                             android:textStyle="bold" />
+
+
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:id="@+id/pro_acctypebtn"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:clickable="true"
+                         android:onClick="SelectType"
+                         android:orientation="vertical"/>
+
+                 </FrameLayout>
+
+
+
+                 <TextView
+                     android:layout_marginTop="8dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Account Number"
+                     android:layout_marginLeft="2dp"
+                     android:fontFamily="sans-serif-medium"
+                     android:textColor="#000"
+                     android:textSize="12dp"/>
+
+                 <EditText
+                     android:id="@+id/pro_acc"
+                     android:layout_marginTop="-5dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:textSize="14dp"
+                     android:hint="Enter Account Number"
+                     android:enabled="false"
+                     android:inputType="textCapCharacters"
+                     android:text=""
+                     android:textColor="@color/purple_50"
+                     android:textColorHint="#4F7A7A7A"
+                     android:textStyle="bold" />
+
+                 <Button
+                     android:id="@+id/bank_btn"
+                     android:onClick="BankUpdateBtn"
+                     android:layout_width="match_parent"
+                     android:layout_height="50dp"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginBottom="5px"
+                     android:text="Update"/>
+
+             </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#ABEEEEEE"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="DashboardBtn"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/img_dashboarda"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/dashboad_d" />
+
+            <TextView
+                android:id="@+id/txt_dashboarda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Dashboard"
+                android:textColor="@color/dull"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="MoreBtn"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/img_morea"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/more_d" />
+
+            <TextView
+                android:id="@+id/txt_morea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Notifications"
+                android:textColor="@color/dull"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="HistoryBtn"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/img_historya"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/history_d" />
+
+            <TextView
+                android:id="@+id/txt_historya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Cards"
+                android:textColor="@color/dull"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/img_accounta"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/account" />
+
+            <TextView
+                android:id="@+id/txt_accounta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Account"
+                android:textColor="@color/purple_700"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="example.javatpoint.com.optionmenu.MainActivity">
+
+    <item android:id="@+id/p_a"
+        android:icon="@drawable/baseline_done_all_24"
+        android:title="Savings"/>
+    <item  android:id="@+id/p_na"
+        android:icon="@drawable/baseline_block_24"
+        android:title="Current"/>
+
+</menu>

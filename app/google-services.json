@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "724771113082",
+    "project_id": "whatsapp-seller-e6e04",
+    "storage_bucket": "whatsapp-seller-e6e04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724771113082:android:d09ddf0acab8191e9453c3",
+        "android_client_info": {
+          "package_name": "com.exito.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724771113082-o1so4vfb3p6b0497smkqgrqafgrdaqhn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2OoJhFqj3vlWNvVRdNAhuD6sXQFFVc4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724771113082-o1so4vfb3p6b0497smkqgrqafgrdaqhn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
