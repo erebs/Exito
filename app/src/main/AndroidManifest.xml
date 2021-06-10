@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PLEXPAY"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MemregisterActivity"></activity>
+        <activity android:name=".AccdetailsActivity"></activity>
+        <activity android:name=".MemregisterActivity" />
         <activity
             android:name=".ImagePickerActivity"
             android:label="@string/title_activity_image_picker" />

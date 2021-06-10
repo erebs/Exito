@@ -6,19 +6,26 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
+    ImageView Logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        Logo = findViewById(R.id.logo_image_id);
+        Logo.setVisibility(View.GONE);
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
 
+        LogoAnim();
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
@@ -36,7 +43,20 @@ public class SplashActivity extends AppCompatActivity {
 
                 }
             }
-        }, 3000);
+        }, 4000);
 
     }
+
+    public void LogoAnim()
+    {
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                Logo.setVisibility(View.VISIBLE);
+                final Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+                Logo.startAnimation(animation);
+            }
+        }, 1000);
+    }
+
 }

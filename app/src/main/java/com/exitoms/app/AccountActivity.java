@@ -80,7 +80,7 @@ import nl.invissvenska.modalbottomsheetdialog.ModalBottomSheetDialog;
 
 public class AccountActivity extends AppCompatActivity implements ModalBottomSheetDialog.Listener{
 
-    TextView Name,MemID,EditBank;
+    TextView Name,MemID,EditBank,pro_mn;
     EditText Mobile,Email,Pan,Aadhaar,Address,Pincode,State,Dist;
     EditText Bname,Hname,Branch,Account,IFSC,Type;
     Button BankBtn;
@@ -114,7 +114,7 @@ public class AccountActivity extends AppCompatActivity implements ModalBottomShe
         State=findViewById(R.id.pro_state);
         Dist=findViewById(R.id.pro_dist);
         Propic = findViewById(R.id.Propic);
-
+        pro_mn = findViewById(R.id.pro_mn);
         Bname=findViewById(R.id.pro_bname);
         Hname=findViewById(R.id.pro_hname);
         Account=findViewById(R.id.pro_acc);
@@ -130,6 +130,7 @@ public class AccountActivity extends AppCompatActivity implements ModalBottomShe
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
         Name.setText(sharedPreferences.getString("name",""));
         MemID.setText(sharedPreferences.getString("mid",""));
+        pro_mn.setText(sharedPreferences.getString("phone",""));
         Mobile.setText(sharedPreferences.getString("phone",""));
         Email.setText(sharedPreferences.getString("email",""));
         Pan.setText(sharedPreferences.getString("pan",""));
@@ -646,6 +647,12 @@ public class AccountActivity extends AppCompatActivity implements ModalBottomShe
         i.putExtra("u",getString(R.string.site_url)+"member/app/invoice/"+sharedPreferences.getString("id",""));
         i.putExtra("t","Invoice");
         startActivity(i);
+    }
+
+    public void AccountDetails(View view)
+    {
+        Intent intents = new Intent(AccountActivity.this, AccdetailsActivity.class);
+        startActivity(intents);
     }
 
     public void updateBank()

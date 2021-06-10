@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:text="Orders"
+                android:text="Seclob Users"
                 android:textColor="@color/purple_700"
                 android:textSize="10dp"
                 android:textStyle="bold" />
