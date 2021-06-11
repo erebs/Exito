@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent)
         {
             String message = intent.getStringExtra("message");
-            PendingOrders();
+
         }
     };
 
@@ -149,99 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void PendingOrders()
-    {
-        KProgressHUD Loader = KProgressHUD.create(this)
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setLabel("Please wait")
-                .setCancellable(true)
-                .setAnimationSpeed(2)
-                .setDimAmount(0.5f).show();
 
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String URL = getString(R.string.api_url)+"shop/orders";
-        Log.e("URLLLLLL",URL);
-        StringRequest request = new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        Loader.dismiss();
-                        Log.i("VOLLEYES", response);
-                        try {
-
-                            JSONObject Res=new JSONObject(response);
-                            String sts    = Res.getString("sts");
-                            String msg    = Res.getString("msg");
-
-                            if(sts.equalsIgnoreCase("01"))
-                            {
-                                orderDetails.clear();
-                                String Orders = Res.getString("orders");
-                                JSONArray Results = new JSONArray(Orders);
-                                PendingOrders.setText(Results.length()+"");
-                                for (int i = 0; i < Results.length(); i++)
-                                {
-                                    String Result = Results.getString(i);
-                                    JSONObject rst = new JSONObject(Result);
-                                    OrderDetails orderDetail = new OrderDetails();
-                                    orderDetail.setID(rst.getString("id"));
-                                    orderDetail.setAmount(rst.getString("amount"));
-                                    orderDetail.setCustomer(rst.getString("cname"));
-                                    orderDetail.setDate(rst.getString("order_on"));
-                                    orderDetails.add(orderDetail);
-                                }
-                                orderList.renewItems(orderDetails);
-
-                            }
-                            else
-                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                        }
-                        catch (Exception e)
-                        {
-                            Log.e("catcherror",e+"d");
-                            Toast.makeText(MainActivity.this, "Catch Error :"+e, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        NetworkResponse response = error.networkResponse;
-                        String errorMsg = "";
-                        if(response != null && response.data != null)
-                        {
-                            String errorString = new String(response.data);
-                            Log.i("log error", errorString);
-                            Loader.dismiss();
-                            Toast.makeText(MainActivity.this, "Network Error :"+errorString, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-        )
-        {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("shopid",sharedPreferences.getString("id",""));
-                params.put("status","New");
-                params.put("limit","200");
-                params.put("offset","");
-                params.put("fdate","");
-                params.put("tdate","");
-
-                Log.i("loginp ", params.toString());
-                return params;
-            }
-        };
-        request.setShouldCache(false);
-        request.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
-        queue.add(request);
-    }
 
 
     public void OtherDetails(final String memid)
@@ -284,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putString("pincode", UserObject.getString("pincode"));
                                 editor.putString("state", UserObject.getString("state"));
                                 editor.putString("district", UserObject.getString("district"));
+                                editor.putString("points", UserObject.getString("points"));
+                                editor.putString("wallet", UserObject.getString("wallet"));
                                 editor.apply();
                                 Wallet.setText(UserObject.getString("wallet"));
                                 EBSCoins.setText(UserObject.getString("points"));

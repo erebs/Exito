@@ -21,7 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PLEXPAY"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AccdetailsActivity"></activity>
+        <activity android:name=".SeclobuserActivity"></activity>
+        <activity android:name=".AddmemActivity" />
+        <activity android:name=".ListmemsActivity" />
+        <activity android:name=".AmembersActivity" />
+        <activity android:name=".BankActivity" />
+        <activity android:name=".AccdetailsActivity" />
         <activity android:name=".MemregisterActivity" />
         <activity
             android:name=".ImagePickerActivity"

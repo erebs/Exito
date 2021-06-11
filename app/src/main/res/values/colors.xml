@@ -9,4 +9,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dull">#80282E4B</color>
+    <color name="danger">#B10000</color>
 </resources>

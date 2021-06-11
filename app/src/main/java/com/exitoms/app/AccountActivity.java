@@ -78,15 +78,12 @@ import javax.net.ssl.HttpsURLConnection;
 import nl.invissvenska.modalbottomsheetdialog.Item;
 import nl.invissvenska.modalbottomsheetdialog.ModalBottomSheetDialog;
 
-public class AccountActivity extends AppCompatActivity implements ModalBottomSheetDialog.Listener{
+public class AccountActivity extends AppCompatActivity {
 
-    TextView Name,MemID,EditBank,pro_mn;
-    EditText Mobile,Email,Pan,Aadhaar,Address,Pincode,State,Dist;
-    EditText Bname,Hname,Branch,Account,IFSC,Type;
+    TextView Name,MemID,pro_mn,Points,Wallet;
+
     Button BankBtn;
-    LinearLayout TypeBtn;
     SharedPreferences sharedPreferences;
-    ModalBottomSheetDialog dialog;
     ImageView Propic;
     boolean check = true;
     Bitmap bitmap;
@@ -105,77 +102,24 @@ public class AccountActivity extends AppCompatActivity implements ModalBottomShe
         setContentView(R.layout.activity_account);
         MemID=findViewById(R.id.pro_memID);
         Name=findViewById(R.id.pro_name);
-        Mobile=findViewById(R.id.pro_mobile);
-        Email=findViewById(R.id.pro_email);
-        Pan=findViewById(R.id.pro_pan);
-        Aadhaar=findViewById(R.id.pro_adr);
-        Address=findViewById(R.id.pro_address);
-        Pincode=findViewById(R.id.pro_pincode);
-        State=findViewById(R.id.pro_state);
-        Dist=findViewById(R.id.pro_dist);
         Propic = findViewById(R.id.Propic);
         pro_mn = findViewById(R.id.pro_mn);
-        Bname=findViewById(R.id.pro_bname);
-        Hname=findViewById(R.id.pro_hname);
-        Account=findViewById(R.id.pro_acc);
-        Branch=findViewById(R.id.pro_branch);
-        IFSC=findViewById(R.id.pro_ifsc);
-        EditBank=findViewById(R.id.edit_bank);
-        BankBtn = findViewById(R.id.bank_btn);
-        Type = findViewById(R.id.pro_acctype);
-        TypeBtn= findViewById(R.id.pro_acctypebtn);
 
 
+        Points = findViewById(R.id.acc_ebsCoins);
+        Wallet = findViewById(R.id.acc_ablance);
 
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
         Name.setText(sharedPreferences.getString("name",""));
         MemID.setText(sharedPreferences.getString("mid",""));
         pro_mn.setText(sharedPreferences.getString("phone",""));
-        Mobile.setText(sharedPreferences.getString("phone",""));
-        Email.setText(sharedPreferences.getString("email",""));
-        Pan.setText(sharedPreferences.getString("pan",""));
-        Aadhaar.setText(sharedPreferences.getString("aadhaar",""));
-        Pincode.setText(sharedPreferences.getString("pincode",""));
-        State.setText(sharedPreferences.getString("state",""));
-        Dist.setText(sharedPreferences.getString("district",""));
-        Address.setText(sharedPreferences.getString("address",""));
+        Points.setText(sharedPreferences.getString("points",""));
+        Wallet.setText(sharedPreferences.getString("wallet",""));
 
         Glide.with(this).load(getString(R.string.site_url)+"assets/images/profilepics/"+sharedPreferences.getString("mid","")+".jpg").placeholder(R.drawable.man)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
                 .into(Propic);
-
-        dialog = new ModalBottomSheetDialog.Builder()
-                .setHeader("Select your Bank account type")
-                .add(R.menu.bank_account_type)
-                .build();
-
-        getBank();
-
-//        Bname.setText(sharedPreferences.getString("aadhaar",""));
-//        Hname.setText(sharedPreferences.getString("pincode",""));
-//        Account.setText(sharedPreferences.getString("state",""));
-//        Branch.setText(sharedPreferences.getString("district",""));
-//        IFSC.setText(sharedPreferences.getString("address",""));
-
-        IFSC.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start,
-                                      int before, int count) {
-                if(s.length() == 11)
-                    GetIFSC(s.toString());
-
-            }
-        });
 
     }
 
@@ -492,154 +436,8 @@ public class AccountActivity extends AppCompatActivity implements ModalBottomShe
     }
 
 
-    public void BankUpdateBtn(View view)
-    {
-        if(Account.length()>2 && IFSC.length()>3)
-        {
-            updateBank();
-        }
-        else
-        {
-            Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void EditBank(View view)
-    {
-        if(EditBank.getText().toString().equalsIgnoreCase("Edit")) {
-            Bname.setEnabled(true);
-            Hname.setEnabled(true);
-            Account.setEnabled(true);
-            Branch.setEnabled(true);
-            IFSC.setEnabled(true);
-            TypeBtn.setClickable(true);
-            EditBank.setText("Cancel");
-            BankBtn.setVisibility(View.VISIBLE);
-        }else
-        {
-            TypeBtn.setClickable(false);
-            Bname.setEnabled(false);
-            Hname.setEnabled(false);
-            Account.setEnabled(false);
-            Branch.setEnabled(false);
-            IFSC.setEnabled(false);
-            EditBank.setText("Edit");
-            BankBtn.setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public void onItemSelected(String tag, Item item) {
-        Type.setText(item.getTitle().toString());
-        dialog.dismiss();
-    }
-
-    public void SelectType(View view)
-    {
-        dialog.show(getSupportFragmentManager(), "BankDetails");
-    }
-
-    public void getBank()
-    {
-        KProgressHUD Loader = KProgressHUD.create(this)
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setLabel("Please wait")
-                .setCancellable(true)
-                .setAnimationSpeed(2)
-                .setDimAmount(0.5f).show();
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String URL = getString(R.string.api_url)+"bankdetails?memberid="+sharedPreferences.getString("id","");
-        Log.e("URLLLLLL",URL);
-        StringRequest request = new StringRequest(Request.Method.GET, URL,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        Loader.dismiss();
-                        Log.i("VOLLEYES", response);
-                        try {
-
-                            JSONObject Res=new JSONObject(response);
-                            String sts    = Res.getString("sts");
-                            String msg    = Res.getString("msg");
-
-                            if(sts.equalsIgnoreCase("01"))
-                            {
-                                String UserObjectString = Res.getString("bankdetails");
-                                JSONObject UserObject = new JSONObject(UserObjectString);
-
-                                Bname.setEnabled(false);
-                                Hname.setEnabled(false);
-                                TypeBtn.setClickable(false);
-                                Account.setEnabled(false);
-                                Branch.setEnabled(false);
-                                IFSC.setEnabled(false);
-                                EditBank.setText("Edit");
-                                BankBtn.setVisibility(View.GONE);
-
-                                Bname.setText(UserObject.getString("bank_name"));
-                                Hname.setText(UserObject.getString("acc_name"));
-                                Account.setText(UserObject.getString("acc_no"));
-                                Branch.setText(UserObject.getString("branch_name"));
-                                Type.setText(UserObject.getString("acc_type"));
-                                IFSC.setText(UserObject.getString("ifsc_code"));
 
 
-                            }
-                            else if(sts.equalsIgnoreCase("00"))
-                            {
-                                Bname.setEnabled(true);
-                                Hname.setEnabled(true);
-                                Account.setEnabled(true);
-                                TypeBtn.setClickable(true);
-                                Branch.setEnabled(true);
-                                IFSC.setEnabled(true);
-                                EditBank.setText("Cancel");
-                                BankBtn.setVisibility(View.VISIBLE);
-                            }
-                            else
-                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-
-                        }
-                        catch (Exception e)
-                        {
-                            Log.e("catcherror",e+"d");
-                            Toast.makeText(getApplicationContext(), "Catch Error :"+e, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        NetworkResponse response = error.networkResponse;
-                        String errorMsg = "";
-                        if(response != null && response.data != null)
-                        {
-                            String errorString = new String(response.data);
-                            Log.i("log error", errorString);
-                            Loader.dismiss();
-                            Toast.makeText(getApplicationContext(), "Network Error :"+errorString, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-        )
-        {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("uid","");
-                Log.i("loginp ", params.toString());
-                return params;
-            }
-        };
-        request.setShouldCache(false);
-        request.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
-        queue.add(request);
-    }
 
     public void DownloadInvoice(View view)
     {
@@ -655,182 +453,12 @@ public class AccountActivity extends AppCompatActivity implements ModalBottomShe
         startActivity(intents);
     }
 
-    public void updateBank()
+    public void BankDetails(View view)
     {
-        KProgressHUD Loader = KProgressHUD.create(this)
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setLabel("Please wait")
-                .setCancellable(true)
-                .setAnimationSpeed(2)
-                .setDimAmount(0.5f).show();
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String URL = getString(R.string.api_url)+"bankdetails";
-        Log.e("URLLLLLL",URL);
-        StringRequest request = new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        Loader.dismiss();
-                        Log.i("VOLLEYES", response);
-                        try {
-
-                            JSONObject Res=new JSONObject(response);
-                            String sts    = Res.getString("sts");
-                            String msg    = Res.getString("msg");
-
-                            if(sts.equalsIgnoreCase("01"))
-                            {
-
-                                Bname.setEnabled(false);
-                                Hname.setEnabled(false);
-                                Account.setEnabled(false);
-                                Branch.setEnabled(false);
-                                IFSC.setEnabled(false);
-                                TypeBtn.setClickable(false);
-                                EditBank.setText("Edit");
-                                BankBtn.setVisibility(View.GONE);
-                                Toast.makeText(getApplicationContext(), "Your account details updated successfully...", Toast.LENGTH_SHORT).show();
-
-                            }
-                            else if(sts.equalsIgnoreCase("00"))
-                            {
-                                Bname.setEnabled(true);
-                                Hname.setEnabled(true);
-                                Account.setEnabled(true);
-                                Branch.setEnabled(true);
-                                IFSC.setEnabled(true);
-                                Type.setEnabled(true);
-                                TypeBtn.setClickable(true);
-
-                                EditBank.setText("Cancel");
-                                BankBtn.setVisibility(View.VISIBLE);
-                            }
-                            else
-                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-
-                        }
-                        catch (Exception e)
-                        {
-                            Log.e("catcherror",e+"d");
-                            Toast.makeText(getApplicationContext(), "Catch Error :"+e, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        NetworkResponse response = error.networkResponse;
-                        String errorMsg = "";
-                        if(response != null && response.data != null)
-                        {
-                            String errorString = new String(response.data);
-                            Log.i("log error", errorString);
-                            Loader.dismiss();
-                            Toast.makeText(getApplicationContext(), "Network Error :"+errorString, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-        )
-        {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("memberid",sharedPreferences.getString("id",""));
-                params.put("bank_name",Bname.getText().toString());
-                params.put("branch_name",Branch.getText().toString());
-                params.put("acc_name",Hname.getText().toString());
-                params.put("acc_type",Type.getText().toString());
-                params.put("acc_no",Account.getText().toString());
-                params.put("ifsc_code",IFSC.getText().toString());
-                Log.i("loginp ", params.toString());
-                return params;
-            }
-        };
-        request.setShouldCache(false);
-        request.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
-        queue.add(request);
+        Intent intents = new Intent(AccountActivity.this, BankActivity.class);
+        startActivity(intents);
     }
 
-    public void GetIFSC(String IFSC)
-    {
-        KProgressHUD Loader = KProgressHUD.create(this)
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setLabel("Please wait")
-                .setCancellable(true)
-                .setAnimationSpeed(2)
-                .setDimAmount(0.5f).show();
-        RequestQueue queue = Volley.newRequestQueue(AccountActivity.this);
-        String URL = "https://ifsc.razorpay.com/"+IFSC;
-        StringRequest request = new StringRequest(Request.Method.GET, URL,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
 
-                        Log.i("VOLLEYES", response);
-                        Loader.dismiss();
-                        try {
-                            JSONObject Res=new JSONObject(response);
-                            String BRANCH    = Res.getString("BRANCH");
-                            String BANK    = Res.getString("BANK");
-                            Bname.setText(BANK.toUpperCase());
-                            Branch.setText(BRANCH.toUpperCase());
-
-                        }catch (Exception e){
-                            Log.e("catcherror",e+"d");
-                            Loader.dismiss();
-
-                        }
-
-
-
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        NetworkResponse response = error.networkResponse;
-                        String errorMsg = "";
-                        if(response != null && response.data != null){
-                            String errorString = new String(response.data);
-                            Log.i("log error", errorString);
-
-                            Loader.dismiss();
-
-
-                        }
-                    }
-                }
-        ) {
-
-
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("subiconid","subid");
-                Log.i("loginp ", params.toString());
-
-                return params;
-            }
-
-        };
-
-
-        // Add the realibility on the connection.
-        request.setShouldCache(false);
-        request.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
-
-        // Start the request immediately
-        queue.add(request);
-
-    }
 
 }

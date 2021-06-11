@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccdetailsActivity">
+    tools:context=".BankActivity">
+
 
     <ImageView
         android:layout_width="260dp"
         android:layout_height="260dp"
-        android:src="@drawable/ad_image"
+        android:src="@drawable/bnk_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -46,19 +47,19 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Account Details"
+            android:text="Bank Account"
             android:textColor="@color/purple_50"
             android:textSize="16dp"
             android:textStyle="bold" />
 
 
         <TextView
-            android:id="@+id/editSave_acd"
+            android:id="@+id/editSave_bn"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
             android:text="Edit"
-            android:onClick="editAddress"
+            android:onClick="EditBank"
             android:drawableLeft="@drawable/outline_edit_24"
             android:drawablePadding="5dp"
             android:drawableTint="@color/white"
@@ -85,266 +86,164 @@
             android:padding="20dp"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_address"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:hint="Address"
-                android:gravity="top"
-                app:helperText=""
-                app:helperTextEnabled="true"
-                app:helperTextTextColor="@color/purple_700">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_address_e"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_marginBottom="8dp"
-                    android:enabled="false"
-                    android:gravity="left|top"
-                    android:inputType="textMultiLine" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textStyle="normal"
-                    android:textSize="12dp"
-                    android:text="Details Other than Address is not editable"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="?android:attr/listDivider" />
-
-            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_memberid"
+                android:id="@+id/acd_ifsc"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="0dp"
-                android:hint="Member ID"
+                android:hint="IFSC"
                 app:helperText=""
                 android:enabled="false"
                 app:helperTextEnabled="true"
                 app:helperTextTextColor="@color/purple_700">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_memberid_e"
+                    android:id="@+id/acd_ifsc_e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapCharacters" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_name"
+                android:id="@+id/acd_bname"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:hint="Name"
+                android:hint="Bank Name"
                 android:enabled="false"
                 app:helperText=""
                 app:helperTextEnabled="true"
                 app:helperTextTextColor="@color/purple_700">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_name_e"
+                    android:id="@+id/acd_bname_e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapCharacters" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_mobile"
+                android:id="@+id/acd_branch"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:hint="Mobile Number"
+                android:hint="Branch Name"
                 android:enabled="false"
-                app:prefixText="+91"
                 app:helperText=""
                 app:helperTextEnabled="true"
                 app:helperTextTextColor="@color/purple_700">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_mobile_e"
+                    android:id="@+id/acd_branch_e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapCharacters" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_email"
+                android:id="@+id/acd_acch"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:hint="Email ID"
+                android:hint="Account Holder"
                 android:enabled="false"
                 app:helperText=""
                 app:helperTextEnabled="true"
                 app:helperTextTextColor="@color/purple_700">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_email_e"
+                    android:id="@+id/acd_acch_e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapCharacters" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_height="60dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/acd_btype"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Account Type"
+        android:enabled="false"
+        app:helperText=""
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/purple_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/acd_btype_e"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical"
+            android:inputType="textCapCharacters" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="SelectType"
+        android:clickable="true"
+        android:orientation="horizontal"/>
+
+</FrameLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_pan"
+                android:id="@+id/acd_accnum"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:hint="PAN"
+                android:hint="Account Number"
                 android:enabled="false"
                 app:helperText=""
                 app:helperTextEnabled="true"
                 app:helperTextTextColor="@color/purple_700">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_pan_e"
+                    android:id="@+id/acd_accnum_e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_aadhaar"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:hint="Aadhaar Number"
-                android:enabled="false"
-                app:helperText=""
-                app:helperTextEnabled="true"
-                app:helperTextTextColor="@color/purple_700">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_aadhaar_e"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_pincode"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:hint="Pincode"
-                android:enabled="false"
-                app:helperText=""
-                app:helperTextEnabled="true"
-                app:helperTextTextColor="@color/purple_700">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_pincode_e"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_dist"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:hint="District"
-                android:enabled="false"
-                app:helperText=""
-                app:helperTextEnabled="true"
-                app:helperTextTextColor="@color/purple_700">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_dist_e"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/acd_state"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:hint="State"
-                android:enabled="false"
-                app:helperText=""
-                app:helperTextEnabled="true"
-                app:helperTextTextColor="@color/purple_700">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/acd_state_e"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center_vertical"
-                    android:inputType="textCapWords" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
 
 
