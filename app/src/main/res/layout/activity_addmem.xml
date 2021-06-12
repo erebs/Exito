@@ -71,5 +71,354 @@
 
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="20dp"
+            android:layout_marginTop="-20dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Name"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_name_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/aem_gender"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="Gender"
+                    app:helperText=""
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/purple_700">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aem_gender_e"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:inputType="textCapCharacters" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="selectGender"
+                    android:clickable="true"
+                    android:orientation="horizontal"/>
+
+            </FrameLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                app:prefixText="+91"
+                android:hint="Phone"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_phone_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="10"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="Email"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_email_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/aem_package"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="Package"
+                    app:helperText=""
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/purple_700">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aem_package_e"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:inputType="textCapCharacters" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="selectPackage"
+                    android:clickable="true"
+                    android:orientation="horizontal"/>
+
+            </FrameLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_aadhaar"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="Aadhaar Number"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_aadhaar_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_pan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="PAN"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_pan_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="textCapCharacters" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_pincode"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="Pin code"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_pincode_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="6"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_dist"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="District"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_dist_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_state"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="State"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_state_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_address"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="Address"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/regDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_txnid"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="Transaction ID"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_txnid_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="textCapCharacters" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aem_gst"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="GST Number"
+                app:helperText=""
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aem_gst_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:onClick="Submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5px"
+                android:text="Submit"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

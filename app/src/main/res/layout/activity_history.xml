@@ -180,7 +180,7 @@
         android:drawablePadding="5dp"
         android:drawableTint="@color/white"
         android:gravity="center"
-        android:onClick="EditBank"
+        android:onClick="Add"
         android:paddingLeft="10dp"
         android:paddingRight="15dp"
         android:text="Add"

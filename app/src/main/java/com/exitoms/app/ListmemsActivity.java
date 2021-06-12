@@ -3,6 +3,7 @@ package com.exitoms.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class ListmemsActivity extends AppCompatActivity {
 
@@ -14,4 +15,10 @@ public class ListmemsActivity extends AppCompatActivity {
 
 
     }
+
+    public void goBack(View view)
+    {
+        super.onBackPressed();
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.exitoms.app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -21,12 +24,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.exitoms.app.models.OrderDetails;
+import com.github.javiersantos.bottomdialogs.BottomDialog;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +43,8 @@ public class HistoryActivity extends AppCompatActivity implements UserAdaptor.Ac
     UserAdaptor userAdaptor;
     RecyclerView userView;
     SharedPreferences sharedPreferences;
+    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,18 +52,50 @@ public class HistoryActivity extends AppCompatActivity implements UserAdaptor.Ac
         setContentView(R.layout.activity_history);
 
         userView = findViewById(R.id.userView);
-        this.userAdaptor = new UserAdaptor(this);
+        this.userAdaptor = new UserAdaptor(this,this);
         userView.setAdapter(userAdaptor);
         userView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false));
         userView.setNestedScrollingEnabled(false);
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
         seclobUsers();
 
+
+
+//        RelativeLayout layout = new RelativeLayout(this);
+//        ProgressBar progressBar = new ProgressBar(this,null,android.R.attr.progressBarStyleLarge);
+//        progressBar.setIndeterminate(true);
+//        progressBar.setVisibility(View.VISIBLE);
+//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100,100);
+//        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+//        layout.addView(progressBar,params);
+//        setContentView(layout);
+
+
     }
 
     public void Delete(String uID)
     {
-        Toast.makeText(this, uID, Toast.LENGTH_SHORT).show();
+        new BottomDialog.Builder(this)
+                .setTitle("Warning!")
+                .setContent("Do you really want to delete this user?")
+                .setNegativeText("No")
+                .setPositiveText("Yes")
+                .setPositiveBackgroundColorResource(R.color.danger)
+                .setPositiveTextColorResource(android.R.color.white)
+                //.setPositiveTextColor(ContextCompat.getColor(this, android.R.color.colorPrimary)
+                 .onNegative(new BottomDialog.ButtonCallback() {
+                    @Override
+                    public void onClick(BottomDialog dialog) {
+                            dialog.dismiss();
+                    }
+                })
+                .onPositive(new BottomDialog.ButtonCallback() {
+                    @Override
+                    public void onClick(BottomDialog dialog) {
+
+                        Toast.makeText(getApplicationContext(), uID, Toast.LENGTH_SHORT).show();
+                    }
+                }).show();
     }
 
     public void DashboardBtn(View view)
@@ -82,6 +122,11 @@ public class HistoryActivity extends AppCompatActivity implements UserAdaptor.Ac
         finish();
     }
 
+    public void Add(View view)
+    {
+        Intent intents = new Intent(HistoryActivity.this, SeclobuserActivity.class);
+        startActivity(intents);
+    }
 
     public void seclobUsers()
     {
@@ -126,7 +171,8 @@ public class HistoryActivity extends AppCompatActivity implements UserAdaptor.Ac
                                     userModel.setCnumber(rst.getString("contactnumber"));
                                     userModel.setAmount(rst.getString("amount"));
                                     userModel.setSatus(rst.getString("status"));
-                                    userModel.setCdate(rst.getString("created_at"));
+                                    Date date = inputFormat.parse(rst.getString("created_at"));
+                                    userModel.setCdate(outputFormat.format(date));
                                     userModels.add(userModel);
                                 }
                                 userAdaptor.renewItems(userModels);

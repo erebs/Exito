@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="example.javatpoint.com.optionmenu.MainActivity">
+
+    <item android:id="@+id/male"
+        android:title="Male"/>
+    <item  android:id="@+id/female"
+        android:title="Female"/>
+    <item  android:id="@+id/other"
+        android:title="Other"/>
+
+</menu>

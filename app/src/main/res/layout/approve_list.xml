@@ -6,7 +6,6 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/notify_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -24,7 +23,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/su_actcode"
+                android:id="@+id/apmm_mid"
                 android:layout_width="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_height="wrap_content"
@@ -57,7 +56,7 @@
                 android:textColor="#000"
                 android:textSize="10dp"/>
             <TextView
-                android:id="@+id/su_name"
+                android:id="@+id/apmm_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="..."
@@ -70,14 +69,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amount"
+                android:text="Transaction ID"
                 android:fontFamily="sans-serif-medium"
                 android:textColor="#000"
                 android:textSize="10dp"/>
 
 
             <TextView
-                android:id="@+id/su_amount"
+                android:id="@+id/apmm_txnid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="..."
@@ -87,46 +86,6 @@
 
 
         </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Company Name"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="#000"
-                        android:textSize="10dp"/>
-                    <TextView
-                        android:id="@+id/su_cname"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="..."
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="#000"
-                        android:textSize="12dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Contact Number"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="#000"
-                        android:textSize="10dp"/>
-                    <TextView
-                        android:id="@+id/su_cnumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="..."
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="#000"
-                        android:textSize="14dp"/>
-
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -146,7 +105,7 @@
                         android:textColor="#3CFFFFFF"
                         android:textSize="10dp"/>
                     <TextView
-                        android:id="@+id/su_status"
+                        android:id="@+id/apmm_status"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:text="Active"
@@ -167,7 +126,7 @@
                         android:textColor="#000"
                         android:textSize="10dp"/>
                     <TextView
-                        android:id="@+id/su_createdat"
+                        android:id="@+id/apmm_cdate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="..."
@@ -190,7 +149,7 @@
             android:background="?android:attr/listDivider" />
 
         <LinearLayout
-            android:id="@+id/su_delete"
+            android:id="@+id/apmm_downline"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
@@ -200,14 +159,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:drawableLeft="@drawable/outline_delete_24"
+                android:drawableLeft="@drawable/outline_file_download_24"
                 android:drawablePadding="5dp"
-                android:drawableTint="@color/danger"
+                android:drawableTint="@color/purple_200"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="15dp"
-                android:text="Delete"
-                android:textColor="@color/danger"
+                android:text="Downline Members"
+                android:textColor="@color/purple_200"
                 android:textSize="14dp" />
 
         </LinearLayout>

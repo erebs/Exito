@@ -3,6 +3,7 @@ package com.exitoms.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class SeclobuserActivity extends AppCompatActivity {
 
@@ -13,4 +14,10 @@ public class SeclobuserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seclobuser);
     }
+
+    public void goBack(View view)
+    {
+        super.onBackPressed();
+    }
+
 }

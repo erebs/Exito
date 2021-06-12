@@ -147,9 +147,37 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    public void listSecUsers(View view)
+    {
+        Intent intents = new Intent(MainActivity.this, HistoryActivity.class);
+        startActivity(intents);
+        overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+        finish();
+    }
 
+    public void Listmems(View view)
+    {
+        Intent intents = new Intent(MainActivity.this, ListmemsActivity.class);
+        startActivity(intents);
+    }
 
+    public void Amembers(View view)
+    {
+        Intent intents = new Intent(MainActivity.this, AmembersActivity.class);
+        startActivity(intents);
+    }
 
+    public void Addmem(View view)
+    {
+        Intent intents = new Intent(MainActivity.this, AddmemActivity.class);
+        startActivity(intents);
+    }
+
+    public void adduser(View view)
+    {
+        Intent intents = new Intent(MainActivity.this, SeclobuserActivity.class);
+        startActivity(intents);
+    }
 
 
     public void OtherDetails(final String memid)

@@ -3,6 +3,7 @@ package com.exitoms.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class AmembersActivity extends AppCompatActivity {
 
@@ -11,4 +12,10 @@ public class AmembersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amembers);
     }
+
+    public void goBack(View view)
+    {
+        super.onBackPressed();
+    }
+
 }
