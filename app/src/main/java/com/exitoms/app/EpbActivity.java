@@ -18,7 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.github.javiersantos.bottomdialogs.BottomDialog;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
 import org.json.JSONArray;
@@ -31,20 +30,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AmembersActivity extends AppCompatActivity implements ApprovedAdaptor.Action {
+public class EpbActivity extends AppCompatActivity implements EpbAdaptor.Action {
 
-    List<ApprovedModel> approvedModels = new ArrayList<>(1000);
-    ApprovedAdaptor approvedAdaptor;
-    RecyclerView approvedView;
-    SharedPreferences sharedPreferences;
-    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-    SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
-    KProgressHUD Loader;
+        List<ApprovedModel> approvedModels = new ArrayList<>(1000);
+        EpbAdaptor approvedAdaptor;
+        RecyclerView approvedView;
+        SharedPreferences sharedPreferences;
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
+        KProgressHUD Loader;
+        String memberID="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_amembers);
+        setContentView(R.layout.activity_epb);
 
         Loader = KProgressHUD.create(this)
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
@@ -53,14 +53,14 @@ public class AmembersActivity extends AppCompatActivity implements ApprovedAdapt
                 .setAnimationSpeed(2)
                 .setDimAmount(0.5f);
 
-        approvedView = findViewById(R.id.approvedView);
-        this.approvedAdaptor = new ApprovedAdaptor(this,this);
+        approvedView = findViewById(R.id.downloneView2);
+        this.approvedAdaptor = new EpbAdaptor(this,this);
         approvedView.setAdapter(approvedAdaptor);
         approvedView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false));
         approvedView.setNestedScrollingEnabled(false);
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
+        memberID = sharedPreferences.getString("id","");
         approvedMembers();
-
     }
 
     public void Delete(String uID)
@@ -77,9 +77,9 @@ public class AmembersActivity extends AppCompatActivity implements ApprovedAdapt
     {
         Loader.show();
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String URL = getString(R.string.api_url)+"members";
+        String URL = getString(R.string.api_url)+"epbonus?memberid="+sharedPreferences.getString("id","");
         Log.e("URLLLLLL",URL);
-        StringRequest request = new StringRequest(Request.Method.POST, URL,
+        StringRequest request = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>()
                 {
                     @Override
@@ -96,35 +96,32 @@ public class AmembersActivity extends AppCompatActivity implements ApprovedAdapt
                             if(sts.equalsIgnoreCase("01"))
                             {
                                 approvedModels.clear();
-                                String Orders = Res.getString("members");
+                                String Orders = Res.getString("mrequests");
                                 JSONArray Results = new JSONArray(Orders);
                                 if(Results.length()<1)
-                                    findViewById(R.id.nomemApproved).setVisibility(View.VISIBLE);
+                                    findViewById(R.id.nomemDownline2).setVisibility(View.VISIBLE);
                                 for (int i = 0; i < Results.length(); i++)
                                 {
                                     String Result = Results.getString(i);
                                     JSONObject rst = new JSONObject(Result);
                                     ApprovedModel approvedModel = new ApprovedModel();
-                                    approvedModel.setmID(rst.getString("uid"));
-                                    approvedModel.setID(rst.getString("id"));
-                                    approvedModel.setName(rst.getString("name"));
-                                    approvedModel.setShowDownLine("true");
-                                    approvedModel.setTxnID(rst.getString("trans_id"));
+                                    approvedModel.setmID(rst.getString("id"));
+                                    approvedModel.setName(rst.getString("amount"));
+                                    approvedModel.setTxnID(rst.getString("type"));
                                     approvedModel.setSatus(rst.getString("status"));
-                                    Date date = inputFormat.parse(rst.getString("created_at"));
-                                    approvedModel.setCdate(outputFormat.format(date));
+                                    approvedModel.setCdate(rst.getString("created_at"));
                                     approvedModels.add(approvedModel);
                                 }
                                 approvedAdaptor.renewItems(approvedModels);
 
                             }
                             else
-                                Toast.makeText(AmembersActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EpbActivity.this, msg, Toast.LENGTH_SHORT).show();
                         }
                         catch (Exception e)
                         {
                             Log.e("catcherror",e+"d");
-                            Toast.makeText(AmembersActivity.this, "Catch Error :"+e, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EpbActivity.this, "Catch Error :"+e, Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -140,7 +137,7 @@ public class AmembersActivity extends AppCompatActivity implements ApprovedAdapt
                             String errorString = new String(response.data);
                             Log.i("log error", errorString);
                             Loader.dismiss();
-                            Toast.makeText(AmembersActivity.this, "Network Error :"+errorString, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EpbActivity.this, "Network Error :"+errorString, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -150,9 +147,7 @@ public class AmembersActivity extends AppCompatActivity implements ApprovedAdapt
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("memberid",sharedPreferences.getString("id",""));
-                params.put("limit","200");
-                params.put("offset","");
+                params.put("memberid",memberID);
 
                 Log.i("loginp ", params.toString());
                 return params;

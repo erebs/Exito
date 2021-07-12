@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyViewHolder> {
+public class EpbAdaptor extends RecyclerView.Adapter<EpbAdaptor.MyViewHolder> {
     private LayoutInflater inflater;
     Context ctx;
     private List<ApprovedModel> mApprovedModel = new ArrayList<>();
@@ -28,7 +27,7 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
     FragmentTransaction ft;
     private Action action;
 
-    public ApprovedAdaptor(Context ctx, Activity activity){
+    public EpbAdaptor(Context ctx, Activity activity){
         this.ctx = ctx;
         this.activity = activity;
         this.action= ((Action)ctx);
@@ -42,23 +41,22 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.approve_list, parent,false);
-        return new ApprovedAdaptor.MyViewHolder(inflate);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.epb_list, parent,false);
+        return new EpbAdaptor.MyViewHolder(inflate);
 
 
     }
 
 
-
     @Override
-    public void onBindViewHolder(ApprovedAdaptor.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(EpbAdaptor.MyViewHolder holder, final int position) {
         ApprovedModel = mApprovedModel.get(position);
-        holder.mID.setText(ApprovedModel.getmID());
+        holder.mID.setText("EPB"+ApprovedModel.getmID());
         holder.Name.setText(ApprovedModel.getName());
         holder.TxnID.setText(ApprovedModel.getTxnID());
         holder.Cdate.setText(ApprovedModel.getCdate());
 
-        if(ApprovedModel.getSatus().equalsIgnoreCase("Active"))
+        if(ApprovedModel.getSatus().equalsIgnoreCase("Accepted"))
         {
             holder.Status.setBackground(ctx.getDrawable(R.drawable.green_box));
         }
@@ -70,23 +68,7 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
             holder.Status.setBackground(ctx.getDrawable(R.drawable.pending));
         }
         holder.Status.setText(ApprovedModel.getSatus());
-        if(ApprovedModel.getShowDownLine().equalsIgnoreCase("true"))
-            holder.Downline.setVisibility(View.VISIBLE);
-        else
-            holder.Downline.setVisibility(View.GONE);
 
-        holder.Downline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(ctx,DownlineActivity.class);
-                i.putExtra("memberID",mApprovedModel.get(position).getID());
-                ctx.startActivity(i);
-                action.Delete(mApprovedModel.get(position).getID());
-
-            }
-
-        });
     }
 
     @Override
@@ -106,17 +88,15 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
     class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView mID,Name,TxnID,Status,Cdate;
-        LinearLayout Downline;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            mID = (TextView) itemView.findViewById(R.id.apmm_mid);
-            Name = (TextView) itemView.findViewById(R.id.apmm_name);
-            TxnID = (TextView) itemView.findViewById(R.id.apmm_txnid);
-            Cdate = (TextView) itemView.findViewById(R.id.apmm_cdate);
-            Status = (TextView) itemView.findViewById(R.id.apmm_status  );
-            Downline = itemView.findViewById(R.id.apmm_downline);
+            mID = (TextView) itemView.findViewById(R.id.epb_mid);
+            Name = (TextView) itemView.findViewById(R.id.epb_name);
+            TxnID = (TextView) itemView.findViewById(R.id.epb_txnid);
+            Cdate = (TextView) itemView.findViewById(R.id.epb_cdate);
+            Status = (TextView) itemView.findViewById(R.id.epb_status  );
         }
 
     }

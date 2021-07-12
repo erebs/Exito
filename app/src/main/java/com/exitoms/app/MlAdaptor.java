@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyViewHolder> {
+public class MlAdaptor extends RecyclerView.Adapter<MlAdaptor.MyViewHolder> {
     private LayoutInflater inflater;
     Context ctx;
     private List<ApprovedModel> mApprovedModel = new ArrayList<>();
@@ -28,7 +27,7 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
     FragmentTransaction ft;
     private Action action;
 
-    public ApprovedAdaptor(Context ctx, Activity activity){
+    public MlAdaptor(Context ctx, Activity activity){
         this.ctx = ctx;
         this.activity = activity;
         this.action= ((Action)ctx);
@@ -42,8 +41,8 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.approve_list, parent,false);
-        return new ApprovedAdaptor.MyViewHolder(inflate);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.mem_list, parent,false);
+        return new MlAdaptor.MyViewHolder(inflate);
 
 
     }
@@ -51,7 +50,7 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
 
 
     @Override
-    public void onBindViewHolder(ApprovedAdaptor.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MlAdaptor.MyViewHolder holder, final int position) {
         ApprovedModel = mApprovedModel.get(position);
         holder.mID.setText(ApprovedModel.getmID());
         holder.Name.setText(ApprovedModel.getName());
@@ -79,9 +78,6 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ctx,DownlineActivity.class);
-                i.putExtra("memberID",mApprovedModel.get(position).getID());
-                ctx.startActivity(i);
                 action.Delete(mApprovedModel.get(position).getID());
 
             }
@@ -111,12 +107,12 @@ public class ApprovedAdaptor extends RecyclerView.Adapter<ApprovedAdaptor.MyView
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            mID = (TextView) itemView.findViewById(R.id.apmm_mid);
-            Name = (TextView) itemView.findViewById(R.id.apmm_name);
-            TxnID = (TextView) itemView.findViewById(R.id.apmm_txnid);
-            Cdate = (TextView) itemView.findViewById(R.id.apmm_cdate);
-            Status = (TextView) itemView.findViewById(R.id.apmm_status  );
-            Downline = itemView.findViewById(R.id.apmm_downline);
+            mID = (TextView) itemView.findViewById(R.id.ml_mid);
+            Name = (TextView) itemView.findViewById(R.id.ml_name);
+            TxnID = (TextView) itemView.findViewById(R.id.ml_txnid);
+            Cdate = (TextView) itemView.findViewById(R.id.ml_cdate);
+            Status = (TextView) itemView.findViewById(R.id.ml_status  );
+            Downline = itemView.findViewById(R.id.ml_delete);
         }
 
     }

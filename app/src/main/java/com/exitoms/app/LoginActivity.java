@@ -18,6 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
 import org.json.JSONObject;
@@ -38,6 +40,13 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
         Phone = findViewById(R.id.EditLoginPhone);
         Password = findViewById(R.id.EditLoginPassword);
+        FirebaseMessaging.getInstance().subscribeToTopic("global").addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(getApplicationContext(),"MSG Activated...",Toast.LENGTH_LONG).show();
+            }
+        });
+
 
     }
 

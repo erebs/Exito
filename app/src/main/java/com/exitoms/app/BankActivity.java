@@ -156,7 +156,7 @@ public class BankActivity extends AppCompatActivity implements ModalBottomSheetD
                                 Type.setEnabled(false);
 
                                 editSave.setCompoundDrawablesWithIntrinsicBounds(save,null,null,null);
-                                editSave.setText("Save");
+                                editSave.setText("Edit");
 
                                 Bname.setText(UserObject.getString("bank_name"));
                                 Hname.setText(UserObject.getString("acc_name"));
@@ -167,7 +167,7 @@ public class BankActivity extends AppCompatActivity implements ModalBottomSheetD
 
 
                             }
-                            else if(sts.equalsIgnoreCase("00"))
+                            else
                             {
                                 Bname.setEnabled(true);
                                 Hname.setEnabled(true);
@@ -178,10 +178,9 @@ public class BankActivity extends AppCompatActivity implements ModalBottomSheetD
                                 Type.setEnabled(true);
 
                                 editSave.setCompoundDrawablesWithIntrinsicBounds(edit,null,null,null);
-                                editSave.setText("Edit");
+                                editSave.setText("Save");
                             }
-                            else
-                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+
 
                         }
                         catch (Exception e)

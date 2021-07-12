@@ -11,6 +11,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 public class SplashActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
@@ -24,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         Logo = findViewById(R.id.logo_image_id);
         Logo.setVisibility(View.GONE);
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
+        FirebaseMessaging.getInstance().subscribeToTopic("global");
 
         LogoAnim();
         new Handler().postDelayed(new Runnable(){

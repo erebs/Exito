@@ -62,7 +62,7 @@ public class AddmemActivity extends AppCompatActivity implements ModalBottomShee
         Pincode = findViewById(R.id.aem_pincode_e);
         Dist = findViewById(R.id.aem_dist_e);
         State = findViewById(R.id.aem_state_e);
-        Address = findViewById(R.id.acd_address_e);
+        Address = findViewById(R.id.aem_address_e);
         TxnID = findViewById(R.id.aem_txnid_e);
         GstNumber = findViewById(R.id.aem_gst_e);
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
@@ -116,7 +116,7 @@ public class AddmemActivity extends AppCompatActivity implements ModalBottomShee
 
     public void Submit(View view)
     {
-        if(Name.length()>2 && Mobile.length()==10 && Aadhaar.length()>2 && Package.length()>2 && Pan.length()>2 && Pincode.length()>2 && Address.length()>2 && TxnID.length()>2)
+        if(Name.length()>2 && Mobile.length()==10 && Aadhaar.length()>2 && Package.length()>2 && TxnID.length()>2)
             RegisterMenberApi();
         else
             Toast.makeText(this, "Some required fields are missing!", Toast.LENGTH_SHORT).show();
@@ -188,14 +188,13 @@ public class AddmemActivity extends AppCompatActivity implements ModalBottomShee
                 params.put("address",Address.getText().toString());
                 params.put("aadhaar",Aadhaar.getText().toString());
                 params.put("pan",Pan.getText().toString());
-                params.put("pincode",Pincode.getText().toString());
+                params.put("pincode",Pincode.getText(). toString());
                 params.put("state",State.getText().toString());
                 params.put("district",Dist.getText().toString());
-                params.put("added_by",sharedPreferences.getString("mid",""));
+                params.put("added_by",sharedPreferences.getString("id",""));
                 params.put("gender",Gender.getText().toString());
                 params.put("trans_id",TxnID.getText().toString());
                 params.put("gst_number",GstNumber.getText().toString());
-                params.put("status","Active");
                 Log.i("loginp ", params.toString());
                 return params;
             }

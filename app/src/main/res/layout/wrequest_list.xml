@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/notify_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        android:background="#80FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/wr_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="..."
+                android:textColor="#000"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center|left">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wallet Amount"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textSize="10dp"/>
+            <TextView
+                android:id="@+id/wr_wamt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textSize="12dp"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Requested Amount"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textSize="10dp"/>
+
+
+            <TextView
+                android:id="@+id/wr_ramt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textSize="12dp"/>
+
+
+        </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="After TDS tax"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#000"
+                        android:textSize="10dp"/>
+                    <TextView
+                        android:id="@+id/wr_tds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="..."
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#000"
+                        android:textSize="12dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin comments"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#000"
+                        android:textSize="10dp"/>
+                    <TextView
+                        android:id="@+id/wr_cmt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="..."
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#000"
+                        android:textSize="14dp"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#3CFFFFFF"
+                        android:textSize="10dp"/>
+                    <TextView
+                        android:id="@+id/wr_status"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Active"
+                        android:background="@drawable/success"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#fff"
+                        android:textSize="12dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Requested at"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#000"
+                        android:textSize="10dp"/>
+                    <TextView
+                        android:id="@+id/wr_rdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="..."
+                        android:gravity="right"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#000"
+                        android:textSize="12dp"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

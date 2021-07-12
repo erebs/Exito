@@ -46,23 +46,31 @@ import java.util.Map;
 import com.exitoms.app.adaptors.OrderList;
 import com.exitoms.app.models.OrderDetails;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements WhAdaptor.Action{
 
     ImageView DashboardIcon,HistoryIcon,AccountIcon,MoreIcon;
     TextView DashboardText, HistoryText, AccountText, MoreText,memID,joinDate,Wallet,EBSCoins;
     SharedPreferences sharedPreferences;
     ImageView Logo;
-    TextView Name,PendingOrders;
-
-    List<OrderDetails> orderDetails = new ArrayList<>(1000);
-    private OrderList orderList;
-    RecyclerView OrdersView;
+    TextView Name,refIncome,refNum,renewalIncome,seclobAct,actIncome,negPoints;
+    String memberID;
+    List<ApprovedModel> approvedModels = new ArrayList<>(1000);
+    WhAdaptor approvedAdaptor;
+    RecyclerView approvedView;
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        refIncome = findViewById(R.id.refIncome);
+        refNum = findViewById(R.id.refNum);
+        renewalIncome = findViewById(R.id.renewalIncome);
+        seclobAct = findViewById(R.id.seclobAct);
+        actIncome = findViewById(R.id.actIncome);
+        negPoints = findViewById(R.id.negPoints);
+
 
         Wallet = findViewById(R.id.main_wallet_balance);
         EBSCoins = findViewById(R.id.ebsCoins);
@@ -80,11 +88,7 @@ public class MainActivity extends AppCompatActivity {
         Logo  = findViewById(R.id.logo_image);
         Name  = findViewById(R.id.main_name);
 
-        OrdersView = findViewById(R.id.main_oders_view);
-        orderList = new OrderList(getApplication());
-        OrdersView.setAdapter(orderList);
-        OrdersView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        OrdersView.setNestedScrollingEnabled(false);
+
 
         sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
        //LoginApi(sharedPreferences.getString("phone",""),sharedPreferences.getString("password",""));
@@ -96,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
                 .into(Logo);
+
+        approvedView = findViewById(R.id.main_oders_view);
+        this.approvedAdaptor = new WhAdaptor(this,this);
+        approvedView.setAdapter(approvedAdaptor);
+        approvedView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false));
+        approvedView.setNestedScrollingEnabled(false);
+        sharedPreferences = getSharedPreferences("WHTS", MODE_PRIVATE);
+        memberID = sharedPreferences.getString("id","");
+        approvedMembers();
 
     }
 
@@ -110,9 +123,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onResume() {
-        //PendingOrders();
+        OtherDetails(sharedPreferences.getString("id",""));
         super.onResume();
         registerReceiver(mMessageReceiver, new IntentFilter("was-push"));
+    }
+
+    public void Delete(String uID)
+    {
+
     }
 
     @Override
@@ -167,15 +185,33 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intents);
     }
 
+    public void Wallet(View view)
+    {
+        Intent intents = new Intent(MainActivity.this, WalletActivity.class);
+        startActivity(intents);
+    }
+
     public void Addmem(View view)
     {
         Intent intents = new Intent(MainActivity.this, AddmemActivity.class);
         startActivity(intents);
     }
 
+    public void EPB(View view)
+    {
+        Intent intents = new Intent(MainActivity.this, EpbActivity.class);
+        startActivity(intents);
+    }
+
     public void adduser(View view)
     {
         Intent intents = new Intent(MainActivity.this, SeclobuserActivity.class);
+        startActivity(intents);
+    }
+
+    public void Withdraw(View view)
+    {
+        Intent intents = new Intent(MainActivity.this, WithdrawActivity.class);
         startActivity(intents);
     }
 
@@ -223,13 +259,20 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putString("points", UserObject.getString("points"));
                                 editor.putString("wallet", UserObject.getString("wallet"));
                                 editor.apply();
-                                Wallet.setText(UserObject.getString("wallet"));
+                                Wallet.setText("₹"+UserObject.getString("wallet"));
                                 EBSCoins.setText(UserObject.getString("points"));
+
                                 SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
                                 SimpleDateFormat outputFormat = new SimpleDateFormat("MMM. dd yyyy");
                                 Date date = inputFormat.parse( UserObject.getString("created_at"));
                                 String formattedDate = outputFormat.format(date);
                                 joinDate.setText(formattedDate);
+                                negPoints.setText("-"+Res.getString("exitonegativepoints"));
+                                refIncome.setText("₹"+Res.getString("referalincome"));
+                                refNum.setText("/"+Res.getString("referalactive"));
+                                renewalIncome.setText("₹"+Res.getString("renewelincome"));
+                                seclobAct.setText(Res.getString("seclobusercount"));
+                                actIncome.setText("₹"+Res.getString("seclobuseramount"));
                             }
                             else
                                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -265,6 +308,90 @@ public class MainActivity extends AppCompatActivity {
             {
                 Map<String, String> params = new HashMap<String, String> ();
                 params.put("memberid",memid);
+                Log.i("loginp ", params.toString());
+                return params;
+            }
+        };
+        request.setShouldCache(false);
+        request.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
+        queue.add(request);
+    }
+
+    public void approvedMembers()
+    {
+
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        String URL = getString(R.string.api_url)+"wallethistory?memberid="+sharedPreferences.getString("id","");
+        Log.e("URLLLLLL",URL);
+        StringRequest request = new StringRequest(Request.Method.GET, URL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+
+                        Log.i("VOLLEYES", response);
+                        try {
+
+                            JSONObject Res=new JSONObject(response);
+                            String sts    = Res.getString("sts");
+                            String msg    = Res.getString("msg");
+
+                            if(sts.equalsIgnoreCase("01"))
+                            {
+                                approvedModels.clear();
+                                String Orders = Res.getString("wallethistory");
+                                JSONArray Results = new JSONArray(Orders);
+                                if(Results.length()<1)
+                                    findViewById(R.id.nomemDownline3).setVisibility(View.VISIBLE);
+                                for (int i = 0; i < Results.length(); i++)
+                                {
+                                    String Result = Results.getString(i);
+                                    JSONObject rst = new JSONObject(Result);
+                                    ApprovedModel approvedModel = new ApprovedModel();
+                                    approvedModel.setmID("EW"+rst.getString("id")+" - "+rst.getString("purpose"));
+                                    approvedModel.setName(rst.getString("amount"));
+                                    approvedModel.setTxnID(rst.getString("comments"));
+                                    approvedModel.setSatus(rst.getString("type"));
+                                    approvedModel.setCdate(rst.getString("created_at"));
+                                    approvedModels.add(approvedModel);
+                                }
+                                approvedAdaptor.renewItems(approvedModels);
+
+                            }
+                            else
+                                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
+                        catch (Exception e)
+                        {
+                            Log.e("catcherror",e+"d");
+                            Toast.makeText(MainActivity.this, "Catch Error :"+e, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        NetworkResponse response = error.networkResponse;
+                        String errorMsg = "";
+                        if(response != null && response.data != null)
+                        {
+                            String errorString = new String(response.data);
+                            Log.i("log error", errorString);
+                            Toast.makeText(MainActivity.this, "Network Error :"+errorString, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        )
+        {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("memberid",memberID);
+
                 Log.i("loginp ", params.toString());
                 return params;
             }

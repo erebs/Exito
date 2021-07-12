@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListmemsActivity">
+    tools:context=".EpbActivity">
 
     <ImageView
         android:layout_width="260dp"
         android:layout_height="260dp"
-        android:src="@drawable/mm_image"
+        android:src="@drawable/downline_img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -46,7 +46,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Registered Members"
+            android:text="Exito Promotion Bonus"
             android:textColor="@color/purple_50"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -56,9 +56,10 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
-            android:text="Add"
-            android:onClick="Addmems"
-            android:drawableLeft="@drawable/outline_add_circle_outline_24"
+            android:text="Edit"
+            android:visibility="gone"
+            android:onClick="EditBank"
+            android:drawableLeft="@drawable/outline_edit_24"
             android:drawablePadding="5dp"
             android:drawableTint="@color/white"
             android:background="@drawable/prime"
@@ -70,6 +71,7 @@
 
     </LinearLayout>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -79,14 +81,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/MlView"
+            android:id="@+id/downloneView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/nomemApproved4"
+        android:id="@+id/nomemDownline2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -107,9 +109,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12dp"
-            android:text="Oops! No Registered members."/>
+            android:text="Please hang tight, you are next on the line."/>
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

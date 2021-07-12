@@ -123,6 +123,12 @@ public class AccountActivity extends AppCompatActivity {
 
     }
 
+    public void Withdraw(View view)
+    {
+        Intent intents = new Intent(AccountActivity.this, WithdrawActivity.class);
+        startActivity(intents);
+    }
+
 
     public int inDP(String inPX)
     {

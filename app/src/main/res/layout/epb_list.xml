@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        android:background="#80FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/epb_mid"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="14dp"/>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center|left">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textSize="10dp"/>
+            <TextView
+                android:id="@+id/epb_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textSize="12dp"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount Type"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textSize="10dp"/>
+
+
+            <TextView
+                android:id="@+id/epb_txnid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:textSize="12dp"/>
+
+
+        </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#3CFFFFFF"
+                        android:textSize="10dp"/>
+                    <TextView
+                        android:id="@+id/epb_status"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Active"
+                        android:background="@drawable/success"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#fff"
+                        android:textSize="12dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Created at"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#000"
+                        android:textSize="10dp"/>
+                    <TextView
+                        android:id="@+id/epb_cdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="..."
+                        android:gravity="right"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="#000"
+                        android:textSize="12dp"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

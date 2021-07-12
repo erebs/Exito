@@ -27,7 +27,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService
 
     private static final String TAG = "WAS";
     public String title="";
-    Uri sound = Uri.parse("android.resource://in.tigavision.client/" + R.raw.alert);
+    Uri sound = Uri.parse("android.resource://com.exitoms.app/" + R.raw.alert);
 
     @Override
     public void onNewToken(String s)
@@ -66,8 +66,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService
 
     private void showNotification(String title, String message)
     {
-        Log.d("SECLOB",title);
-        String CHANNEL_ID="Alert";
+        Log.d("Exito",title);
+        String CHANNEL_ID="Exito";
         String CHANNEL_NAME="Alert";
 
         Intent resultIntent = new Intent(this, SplashActivity.class);
@@ -100,7 +100,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService
         status.setContentIntent(resultPendingIntent);
         status.setAutoCancel(true)
                 .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.drawable.baseline_shopping_bag_24)
+                .setSmallIcon(R.drawable.logo_white)
                 .setColor(getResources().getColor(R.color.purple_700))
                 .setContentTitle(title)
                 .setLargeIcon(largeIcon)
@@ -109,7 +109,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService
                 .setContentText(message)
                 .setWhen(System.currentTimeMillis())
                 .setDefaults(Notification.FLAG_ONLY_ALERT_ONCE)
-                .setSound(Uri.parse("android.resource://in.tigavision.client/"+R.raw.alert));
+                .setSound(Uri.parse("android.resource://com.exitoms.app/"+R.raw.alert));
 
         notificationManager.notify(12232, status.build());
     }

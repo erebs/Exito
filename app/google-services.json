@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "724771113082",
-    "project_id": "whatsapp-seller-e6e04",
-    "storage_bucket": "whatsapp-seller-e6e04.appspot.com"
+    "project_number": "627458708683",
+    "project_id": "exito-2d086",
+    "storage_bucket": "exito-2d086.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:724771113082:android:d09ddf0acab8191e9453c3",
+        "mobilesdk_app_id": "1:627458708683:android:786b99f96389ab1e65f74e",
         "android_client_info": {
-          "package_name": "com.exito.app"
+          "package_name": "com.exitoms.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "724771113082-o1so4vfb3p6b0497smkqgrqafgrdaqhn.apps.googleusercontent.com",
+          "client_id": "627458708683-rrok83ired559otelhhqtqvr9dojv2h0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD2OoJhFqj3vlWNvVRdNAhuD6sXQFFVc4A"
+          "current_key": "AIzaSyCRmnHE2JGG9-L259v8QLqptdG8CMFWAes"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "724771113082-o1so4vfb3p6b0497smkqgrqafgrdaqhn.apps.googleusercontent.com",
+              "client_id": "627458708683-rrok83ired559otelhhqtqvr9dojv2h0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

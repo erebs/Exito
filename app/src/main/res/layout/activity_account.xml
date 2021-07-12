@@ -280,6 +280,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:clickable="true"
+                android:onClick="Withdraw"
                 android:background="@drawable/ripple_bg">
 
                 <LinearLayout

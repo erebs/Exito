@@ -353,7 +353,7 @@
                 app:helperTextTextColor="@color/purple_700">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/regDes"
+                    android:id="@+id/aem_address_e"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginBottom="8dp"
